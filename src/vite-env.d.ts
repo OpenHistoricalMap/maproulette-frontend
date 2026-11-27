@@ -29,6 +29,8 @@ interface AppEnv {
   readonly VITE_ENABLE_PLUGINS: string | undefined
   /** Comma-separated URLs of deployment plugin bundles to auto-load at login */
   readonly VITE_DEPLOYMENT_PLUGIN_URLS: string | undefined
+  /** Date (YYYY-MM-DD) the OHM basemap shows. Defaults to today. */
+  readonly VITE_OHM_MAP_DATE: string | undefined
 }
 
 interface ImportMetaEnv extends AppEnv {}
