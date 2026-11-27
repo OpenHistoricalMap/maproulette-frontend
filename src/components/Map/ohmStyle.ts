@@ -1,5 +1,5 @@
+import OhmHistorical from '@openhistoricalmap/map-styles/dist/historical/historical.json'
 import type { FilterSpecification, StyleSpecification } from 'maplibre-gl'
-import OhmHistorical from './ohm-historical.json'
 
 /** Vector source in the OHM style whose features carry start/end dates. */
 const OHM_SOURCE = 'ohm'
@@ -78,4 +78,8 @@ const ohmMapDate = (): string => {
 
 /** The OHM historical style, filtered to the configured date. */
 export const ohmHistoricalStyle = (): StyleSpecification =>
-  withDateFilter(OhmHistorical as unknown as StyleSpecification, ohmMapDate())
+  withDateFilter(
+    // Name shown in the Map style control
+    { ...(OhmHistorical as unknown as StyleSpecification), name: 'OpenHistoricalMap' },
+    ohmMapDate()
+  )
