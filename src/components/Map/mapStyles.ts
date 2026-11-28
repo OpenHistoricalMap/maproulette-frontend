@@ -5,6 +5,7 @@ import BingAerial from './bing-aerial.json'
 import { customBaseLayerStyles } from './customBaseLayers'
 import EsriWorldImagery from './esri-world-imagery.json'
 import EsriWorldImageryClarity from './esri-world-imagery-clarity.json'
+import { ohmHistoricalStyle } from './ohmStyle'
 import OsmBright from './osm-bright.json'
 import OsmCarto from './osm-carto.json'
 
@@ -15,7 +16,9 @@ export const OVERLAY_GLYPHS_URL = 'https://tiles.openstreetmap.us/fonts/{fontsta
 const asStyle = (s: unknown) => s as StyleSpecification
 
 /** Base layers bundled with the frontend, in the order the control shows them. */
+// OHM first, so it is the default (index 0 is the fallback below).
 export const bundledMapStyles: StyleSpecification[] = [
+  ohmHistoricalStyle(),
   asStyle(OsmBright),
   asStyle(OsmCarto),
   asStyle(BingAerial),

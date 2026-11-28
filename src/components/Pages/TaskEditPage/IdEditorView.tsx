@@ -199,9 +199,11 @@ export const IdEditorView = ({ onClose }: IdEditorViewProps) => {
     if (task.id) params.set('maproulette_task', task.id.toString())
     if (osmEntityIds.length > 0) params.set('id', osmEntityIds.join(','))
 
+    // iD edits the same server MapRoulette signs in to (OHM), with the user's token
     const token = getOSMToken()
-    const osmApiServer = window.env.VITE_OSM_API_SERVER || 'https://api.openstreetmap.org'
-    if (osmApiServer === 'https://api.openstreetmap.org' && token) {
+    params.set('osm_url', window.env.VITE_OSM_SERVER || 'https://www.openstreetmap.org')
+    params.set('api_url', window.env.VITE_OSM_API_SERVER || 'https://api.openstreetmap.org')
+    if (token) {
       params.set('token', token)
     }
 
